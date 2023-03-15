@@ -13,18 +13,22 @@ def worker():
         print(counter)
 
             
-def display():
+def display(input):
     counter = 0
     while True:
         time.sleep(1)
-        counter += 2
-        print(counter)
+        counter += 1
+        print(f'{input}: {counter}\n')
       
 # Passing the target function to thread
 # threading.Thread(target=worker).start()
 
 # Daemon threading
-threading.Thread(target=display, daemon=True).start()
+threading.Thread(target=display, daemon=True, args=('First Thread', )).start()
+
+threading.Thread(target=display, daemon=True, args=('Second Thread', )).start()
+
+threading.Thread(target=display, daemon=True, args=('Third Thread', )).start()
 
 # Getting an input from User
 input("Press 'Enter' to quit the process...\n")
